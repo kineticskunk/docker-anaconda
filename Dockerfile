@@ -25,6 +25,7 @@ RUN curl -o ${APP_ROOT}/anaconda.sh ${MIRROR}/${ANACONDA_INSTALLER} && \
     rm ${APP_ROOT}/anaconda.sh
 ENV PATH ${APP_ROOT}/conda/bin:$PATH
 RUN conda install -n root pyspark
+COPY requirements.txt /home/Jenkins/
 
 RUN chown -R 1001:0 $HOME && \
 	chmod -R g+rw $HOME && \
@@ -33,4 +34,4 @@ RUN chown -R 1001:0 $HOME && \
 
 USER 1001
 
-RUN pip --user install tensorflow
+RUN pip install --user -r /home/Jenkins/requirements.txt
