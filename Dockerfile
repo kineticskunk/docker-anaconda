@@ -25,7 +25,6 @@ RUN curl -o ${APP_ROOT}/anaconda.sh ${MIRROR}/${ANACONDA_INSTALLER} && \
     rm ${APP_ROOT}/anaconda.sh
 ENV PATH ${APP_ROOT}/conda/bin:$PATH
 RUN conda install -n root pyspark
-RUN pip install tensorflow
 
 RUN chown -R 1001:0 $HOME && \
 	chmod -R g+rw $HOME && \
@@ -33,3 +32,5 @@ RUN chown -R 1001:0 $HOME && \
 	chmod -R g+rw /opt
 
 USER 1001
+
+RUN pip --user install tensorflow
