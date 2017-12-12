@@ -1,3 +1,4 @@
 tensorflow
 xmlrunner
 unittest-xml-reporting
+pycobertura
