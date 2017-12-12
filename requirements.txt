@@ -1,2 +1,3 @@
 tensorflow
+xmlrunner
 unittest-xml-reporting
