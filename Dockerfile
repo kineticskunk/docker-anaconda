@@ -33,7 +33,9 @@ RUN chown -R 1001:0 $HOME && \
 	chown -R 1001:0 /opt && \
 	chmod -R g+rw /opt
 
-USER 1001
+USER root
 
 RUN pip install --user -r /home/Jenkins/requirements.txt
 RUN sh /home/Jenkins/install-junit2html.sh
+
+USER 1001
