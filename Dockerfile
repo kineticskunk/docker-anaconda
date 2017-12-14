@@ -28,14 +28,12 @@ RUN conda install -n root pyspark
 COPY requirements.txt /home/Jenkins/
 COPY install-junit2html.sh /home/Jenkins/
 
+RUN pip install --user -r /home/Jenkins/requirements.txt
+RUN sh /home/Jenkins/install-junit2html.sh
+
 RUN chown -R 1001:0 $HOME && \
 	chmod -R g+rw $HOME && \
 	chown -R 1001:0 /opt && \
 	chmod -R g+rw /opt
-
-USER root
-
-RUN pip install --user -r /home/Jenkins/requirements.txt
-RUN sh /home/Jenkins/install-junit2html.sh
 
 USER 1001
