@@ -3,4 +3,4 @@ xmlrunner
 unittest-xml-reporting
 pycobertura
 mock
-mysql-connector
+mysql-connector-python
