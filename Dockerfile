@@ -16,7 +16,7 @@ LABEL io.k8s.description="A Anancoda Jenkins Slave Container." \
     io.openshift.expose-services="8080:http" \
     io.openshift.tags="python,anaconda,conda,conda-build,java,dataprocessing"
 
-RUN yum install -y bzip2
+RUN yum install -y bzip2 python3-devel gcc && yum clean all
 
 # Install conda
 RUN curl -o ${APP_ROOT}/anaconda.sh ${MIRROR}/${ANACONDA_INSTALLER} && \
@@ -24,7 +24,7 @@ RUN curl -o ${APP_ROOT}/anaconda.sh ${MIRROR}/${ANACONDA_INSTALLER} && \
     rm ${APP_ROOT}/anaconda.sh
 ENV PATH ${APP_ROOT}/conda/bin:$PATH
 RUN conda install -n root pyspark
-RUN yum install python3-devel gcc
+
 COPY requirements.txt /home/Jenkins/
 COPY install-junit2html.sh /home/Jenkins/
 
