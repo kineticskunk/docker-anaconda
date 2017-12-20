@@ -30,8 +30,6 @@ COPY install-junit2html.sh /home/Jenkins/
 
 RUN sh /home/Jenkins/install-junit2html.sh
 
-RUN yum remove bzip2 curl
-
 RUN chown -R 1001:0 $HOME && \
 	chmod -R g+rw $HOME && \
 	chown -R 1001:0 /opt && \
