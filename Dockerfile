@@ -2,7 +2,6 @@ FROM openshift/jenkins-slave-base-centos7
 MAINTAINER CI Team <ci@vodacom.co.za>
 
 ARG ANACONDA_VERSION="5.0.1"
-# TODO(coenie): Add to containers.json
 ARG MIRROR="https://repo.continuum.io/archive"
 
 ENV APPLICATION anaconda
@@ -25,6 +24,7 @@ RUN curl -o ${APP_ROOT}/anaconda.sh ${MIRROR}/${ANACONDA_INSTALLER} && \
     rm ${APP_ROOT}/anaconda.sh
 ENV PATH ${APP_ROOT}/conda/bin:$PATH
 RUN conda install -n root pyspark
+RUN yum install python3-devel gcc
 COPY requirements.txt /home/Jenkins/
 COPY install-junit2html.sh /home/Jenkins/
 
