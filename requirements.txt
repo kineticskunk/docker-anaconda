@@ -5,3 +5,4 @@ pycobertura
 mock
 mysql-connector-python
 nexus_uploader
+coverage
