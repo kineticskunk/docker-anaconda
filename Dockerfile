@@ -38,3 +38,4 @@ RUN chown -R 1001:0 $HOME && \
 USER 1001
 
 RUN pip install --user -r /home/Jenkins/requirements.txt
+RUN yum remove -y bzip2 curl
